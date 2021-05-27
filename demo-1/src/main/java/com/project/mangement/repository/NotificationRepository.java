@@ -1,0 +1,14 @@
+package com.project.mangement.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.project.mangement.entity.Notifiactions;
+
+public interface NotificationRepository extends JpaRepository<Notifiactions, Integer> {
+
+	@Query(value = "SELECT * FROM db.notifiactions where email=?1", nativeQuery = true)
+	public List<Notifiactions> getNotifications(String email);
+}
